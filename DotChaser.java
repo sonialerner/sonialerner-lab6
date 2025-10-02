@@ -13,6 +13,8 @@ public class DotChaser {
 
     // INSTEAD OF A NODE, CREATE SOMETHING MORE USER-FRIENDLY.
     Thing L = null;
+    ThingList list = new ThingList(L) ;
+    list.head = L ;
     int count = 0;
 
     while( true ) {
@@ -30,18 +32,14 @@ public class DotChaser {
       // Print out each thing.
       // (SEEMS LIKE A NICE PRINTALL() METHOD CALL WOULD WORK HERE)
       // (SEEMS LIKE A toString() METHOD IN THE CLASS WOULD ALSO BE NICE)
-      for( Thing T = L; T != null; T = T.next )
-        System.out.println(T.row + " " + T.col + " " + T.lab);
+      printAll(list) ;
 
       System.out.println("done");
       System.out.flush();
 
       // Move each thing.
       // (SEEMS LIKE A NICE MOVEALL() METHOD CALL WOULD WORK HERE)
-      for( Thing T = L; T != null; T = T.next ) {
-        maybeTurn(T.data);
-        step(T.data);
-      }
+      moveAll(L) ;
       count++;
     }
   }

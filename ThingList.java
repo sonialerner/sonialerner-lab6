@@ -1,4 +1,5 @@
   import java.lang.String;
+  import java.util.* ;
   
   /**
    * YOU'LL NEED TO PUT THIS SOMEWHERE ELSE
@@ -18,10 +19,19 @@
       Thing curr = thing.head ;
 
       while(curr.next != null) {
-        message += curr.row + " " + curr.col + " " + curr.lab + "\n" ;
+        message += thing.toString() ;
       }
 
-      message += curr.row + " " + curr.col + " " + curr.lab + "\n" ;
+      // add last element
+      message += thing.toString() ;
+
       System.out.println(message) ;
+    }
+
+    public void moveAll(Thing thing) {
+      for( Thing T = L; T != null; T = T.next ) {
+        maybeTurn(T);
+        step(T);
+      }
     }
   }
