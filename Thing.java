@@ -14,24 +14,21 @@ public class Thing {
     // timeSinceLast: this is only important for "TypeB" Things.
     public int  row, col, dir, timeSinceLast;
     public char lab = 'r';
-    public boolean isTypeB;
     public Thing next ;
 
-    Thing(int row, int col, int dir, int timeSinceLast, char lab, boolean isTypeB, Thing next) {
+    Thing(int row, int col, int dir, int timeSinceLast, char lab, Thing next) {
         this.row = row ;
         this.col = col ;
         this.dir = dir ;
         this.timeSinceLast = timeSinceLast ;
         this.lab = lab ;
-        this.isTypeB = isTypeB ;
         this.next = next ;
     }
 
-    Thing(int row, int col, char lab, boolean isTypeB, Thing next) {
+    Thing(int row, int col, char lab, Thing next) {
         this.row = row ;
         this.col = col ;
         this.lab = lab ;
-        this.isTypeB = isTypeB ;
         this.next = next ;
     }
 
@@ -48,34 +45,6 @@ public class Thing {
 
     public void leftTurn(Thing t) {
         t.dir = (t.dir + 3) % 4;
-    }
-
-    public void maybeTurn(Thing t) {
-        int i = rand.nextInt(3);
-
-        if (t.isTypeB) {
-        t.timeSinceLast++;
-
-        if (t.timeSinceLast == 10) {
-            t.timeSinceLast = 0;
-
-            if (i == 1) {
-            rightTurn(t);
-            }
-
-            if (i == 2) {
-            leftTurn(t);
-            }
-        }
-        } else   {
-        if (i == 1) {
-            rightTurn(t);
-        }
-
-        if (i == 2) {
-            leftTurn(t);
-        }
-        }
     }
 
     public void step(Thing t) {

@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class DotChaser {
-  public static Random rand = new Random(System.currentTimeMillis());
+
   /**
    * This static method is ok :)
    */
