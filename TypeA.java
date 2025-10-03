@@ -15,13 +15,4 @@ public class TypeA extends Thing {
         super(row, col, dir, timeSinceLast, lab, next) ;
     }
 
-    public void step(Thing t) {
-        final int[] dc = {
-        0, 1, 0, -1
-        }, dr = {
-        1, 0, -1, 0
-        };
-        t.row += dr[t.dir];
-        t.col += dc[t.dir];
-    }
 }

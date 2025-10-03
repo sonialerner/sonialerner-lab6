@@ -12,15 +12,15 @@
 public class Thing {
     // dir: 0=North, 1=East, 2=South, 3=West.
     // timeSinceLast: this is only important for "TypeB" Things.
-    public int  row, col, dir, timeSinceLast;
+    public int  row, col, dir;
     public char lab = 'r';
     public Thing next ;
+    public boolean isTypeB = false;
 
-    Thing(int row, int col, int dir, int timeSinceLast, char lab, Thing next) {
+    Thing(int row, int col, int dir, char lab, Thing next) {
         this.row = row ;
         this.col = col ;
         this.dir = dir ;
-        this.timeSinceLast = timeSinceLast ;
         this.lab = lab ;
         this.next = next ;
     }
@@ -38,13 +38,22 @@ public class Thing {
         this.next = next ;
     }
 
-    // EEEEEK! STATIC METHODS!!! PLEASE FIND THEM A BETTER HOME.
-    public void rightTurn(Thing t) {
+   public void rightTurn(Thing t) {
         t.dir = (t.dir + 1) % 4;
     }
 
     public void leftTurn(Thing t) {
         t.dir = (t.dir + 3) % 4;
+    }
+
+    public void step(Thing t) {
+        final int[] dc = {
+        0, 1, 0, -1
+        }, dr = {
+        1, 0, -1, 0
+        };
+        t.row += dr[t.dir];
+        t.col += dc[t.dir];
     }
 
     public String toString() {

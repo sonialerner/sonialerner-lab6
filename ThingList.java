@@ -14,24 +14,26 @@
       this.head = head ;
     }
 
-    public void printAll(ThingList thing) {
+    public void printAll() {
       String message = "" ;
-      Thing curr = thing.head ;
+      Thing curr = this.head ;
 
       while(curr.next != null) {
-        message += thing.toString() ;
+        message += this.toString() ;
       }
 
       // add last element
-      message += thing.toString() ;
+      message += this.toString() ;
 
       System.out.println(message) ;
     }
 
-    public void moveAll(Thing thing) {
-      for( Thing T = L; T != null; T = T.next ) {
-        maybeTurn(T);
-        step(T);
+    public void moveAll(ThingList list) {
+      for( Thing T = list.head; T != null; T = T.next ) {
+        if(T.isTypeB == true)
+          T.maybeTurn(T);
+
+        T.step(T);
       }
     }
   }
