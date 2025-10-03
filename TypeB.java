@@ -10,7 +10,7 @@ public class TypeB extends Thing{
     }
 
     TypeB(int row, int col, char lab, Thing next) {
-        super(row, col, dir, timeSinceLast, lab, next) ;
+        super(row, col, lab, next) ;
     }
 
     TypeB(int row, int col, Thing next) {
@@ -32,7 +32,6 @@ public class TypeB extends Thing{
             if (i == 2) {
             leftTurn(t);
             }
-        }
         } else {
             if (i == 1) {
                 rightTurn(t);
@@ -42,4 +41,5 @@ public class TypeB extends Thing{
                 leftTurn(t);
             }
         }
+    }
 }
