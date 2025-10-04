@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class DotChaser {
 
   /**
@@ -32,7 +34,7 @@ public class DotChaser {
 
       // Move each thing.
       // (SEEMS LIKE A NICE MOVEALL() METHOD CALL WOULD WORK HERE)
-      list.moveAll() ;
+      list.moveAll(new Random(System.currentTimeMillis())) ;
       count++;
     }
   }

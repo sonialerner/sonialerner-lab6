@@ -1,3 +1,4 @@
+import java.util.*;
 public class TypeA extends Thing {
 
     TypeA(int row, int col) {
@@ -6,7 +7,7 @@ public class TypeA extends Thing {
     }
 
     @Override
-    public void maybeTurn() {
+    public void maybeTurn(Random rand) {
         // TODO Auto-generated method stub
         int i = rand.nextInt(3);
 

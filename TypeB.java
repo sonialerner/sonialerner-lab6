@@ -9,7 +9,7 @@ public class TypeB extends Thing{
         this.dir = 'b' ;
     }
 
-    public void maybeTurn() {
+    public void maybeTurn(Random rand) {
         int i = rand.nextInt(3);
 
         this.timeSinceLast++;

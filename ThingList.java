@@ -1,4 +1,5 @@
   import java.lang.String;
+  import java.util.*;
   
   /**
    * YOU'LL NEED TO PUT THIS SOMEWHERE ELSE
@@ -15,23 +16,23 @@
     }
 
     private class Node {
-      public Thing data ;
-      public Node next = null ;
+      public Thing data;
+      public Node next;
 
       Node(Thing data) {
         this.data = data ;
       }
     }
 
-    public void add(Thing data) {
+    public void addThing(Thing data) {
       Node node = new Node(data) ;
       node.next = this.head ;
       this.head = node ;
     }
 
     public void addAll(TypeA a, TypeB b) {
-      this.add(a) ;
-      this.add(b) ;
+      this.addThing(a) ;
+      this.addThing(b) ;
     }
 
     public void printAll() {
@@ -48,10 +49,10 @@
       System.out.println(message) ;
     }
 
-    public void moveAll() {
-      for( Thing T = this.head.data; T != null; T = T.next ) {
-        T.maybeTurn();
-        T.step();
+    public void moveAll(Random rand) {
+      for( Node T = this.head; T != null; T = T.next ) {
+        T.data.maybeTurn(rand);
+        T.data.step();
       }
     }
   }

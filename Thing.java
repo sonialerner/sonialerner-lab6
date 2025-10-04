@@ -13,17 +13,18 @@
 public abstract class Thing {
     // dir: 0=North, 1=East, 2=South, 3=West.
     // timeSinceLast: this is only important for "TypeB" Things.
-    protected static Random rand = new Random(System.currentTimeMillis());
-    protected int  row, col, dir;
+    public Random rand = new Random(System.currentTimeMillis());
+    protected int row;
+    protected int col;
+    protected int dir;
     protected char lab ;
-    protected Thing next ;
 
     Thing(int row, int col) {
         this.row = row ;
         this.col = col ;
     }
 
-    public abstract void maybeTurn() ; // no specific directions for when to move a generic Thing
+    public abstract void maybeTurn(Random rand) ; // no specific directions for when to move a generic Thing
 
     public void rightTurn() {
         this.dir = (this.dir + 1) % 4;

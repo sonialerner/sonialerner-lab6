@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class TypeC extends Thing {
     private int timeSinceLast = 0 ;
 
@@ -7,7 +9,7 @@ public class TypeC extends Thing {
     }
 
     @Override
-    public void maybeTurn() {
+    public void maybeTurn(Random rand) {
         if(this.timeSinceLast == 5) {
             this.timeSinceLast = 0; 
             this.rightTurn() ;
