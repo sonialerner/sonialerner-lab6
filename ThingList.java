@@ -8,15 +8,36 @@
    * This class is for linked lists of Thing's
    */
   public class ThingList {
-    public Thing head ;
+    public Node head ;
 
     ThingList(Thing head) {
-      this.head = head ;
+      Node listHead = new Node(head) ;
+      this.head = listHead ;
+    }
+
+    private class Node {
+      public Thing data ;
+      public Node next = null ;
+
+      Node(Thing data) {
+        this.data = data ;
+      }
+    }
+
+    public void add(Thing data) {
+      Node node = new Node(data) ;
+      node.next = this.head ;
+      this.head = node ;
+    }
+
+    public void addAll(TypeA a, TypeB b) {
+      this.add(a) ;
+      this.add(b) ;
     }
 
     public void printAll() {
       String message = "" ;
-      Thing curr = this.head ;
+      Node curr = this.head ;
 
       while(curr.next != null) {
         message += this.toString() ;
@@ -28,12 +49,10 @@
       System.out.println(message) ;
     }
 
-    public void moveAll(ThingList list) {
-      for( Thing T = list.head; T != null; T = T.next ) {
-        if(T.isTypeB == true)
-          T.maybeTurn(T);
-
-        T.step(T);
+    public void moveAll() {
+      for( Thing T = this.head.data; T != null; T = T.next ) {
+        T.maybeTurn();
+        T.step();
       }
     }
   }

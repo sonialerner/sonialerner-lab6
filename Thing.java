@@ -1,4 +1,5 @@
   import java.lang.String;
+  import java.util.Random;
   
   /**
    * A "Thing" moves in a grid world. A TypeA Thing randomly
@@ -9,51 +10,37 @@
    * A STATIC CLASS? OH NO! GET IT OUT OF HERE!
    */
 
-public class Thing {
+public abstract class Thing {
     // dir: 0=North, 1=East, 2=South, 3=West.
     // timeSinceLast: this is only important for "TypeB" Things.
-    public int  row, col, dir;
-    public char lab = 'r';
-    public Thing next ;
-    public boolean isTypeB = false;
+    protected static Random rand = new Random(System.currentTimeMillis());
+    protected int  row, col, dir;
+    protected char lab ;
+    protected Thing next ;
 
-    Thing(int row, int col, int dir, char lab, Thing next) {
+    Thing(int row, int col) {
         this.row = row ;
         this.col = col ;
-        this.dir = dir ;
-        this.lab = lab ;
-        this.next = next ;
     }
 
-    Thing(int row, int col, char lab, Thing next) {
-        this.row = row ;
-        this.col = col ;
-        this.lab = lab ;
-        this.next = next ;
+    public abstract void maybeTurn() ; // no specific directions for when to move a generic Thing
+
+    public void rightTurn() {
+        this.dir = (this.dir + 1) % 4;
     }
 
-    Thing(int row, int col, Thing next) {
-        this.row = row ;
-        this.col = col ;
-        this.next = next ;
+    public void leftTurn() {
+        this.dir = (this.dir + 3) % 4;
     }
 
-   public void rightTurn(Thing t) {
-        t.dir = (t.dir + 1) % 4;
-    }
-
-    public void leftTurn(Thing t) {
-        t.dir = (t.dir + 3) % 4;
-    }
-
-    public void step(Thing t) {
+    public void step() {
         final int[] dc = {
         0, 1, 0, -1
         }, dr = {
         1, 0, -1, 0
         };
-        t.row += dr[t.dir];
-        t.col += dc[t.dir];
+        this.row += dr[this.dir];
+        this.col += dc[this.dir];
     }
 
     public String toString() {

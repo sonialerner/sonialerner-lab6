@@ -14,19 +14,14 @@ public class DotChaser {
     // INSTEAD OF A NODE, CREATE SOMETHING MORE USER-FRIENDLY.
     Thing L = null;
     ThingList list = new ThingList(L) ;
-    list.head = L ;
     int count = 0;
 
     while( true ) {
       // Every N rounds, add another typeA and typeB Thing.
       if( count % N == 0 ) {
-
         // Add a typeA thing to the list.
         // (GEE, THAT'S A LOT OF CODE FOR JUST CREATING ONE THING)
-        TypeA tA = new TypeA(45, 50, L);
-
-        // Add a typeB thing to the list
-        TypeB tB = new TypeB(55, 50, 'b', L);
+        list.addAll(new TypeA(45, 50), new TypeB(55, 50));
       }
 
       // Print out each thing.
@@ -39,7 +34,7 @@ public class DotChaser {
 
       // Move each thing.
       // (SEEMS LIKE A NICE MOVEALL() METHOD CALL WOULD WORK HERE)
-      moveAll(L) ;
+      list.moveAll() ;
       count++;
     }
   }

@@ -1,18 +1,22 @@
 import java.util.*;
 
 public class TypeA extends Thing {
-    public boolean isTypeB = false;
 
-    TypeA(int row, int col, Thing next) {
-        super(row, col, next);
+    TypeA(int row, int col) {
+        super(row, col);
+        this.lab = 'r' ;
     }
 
-    TypeA(int row, int col, char lab, Thing next) {
-        super(row, col, lab, next);
-    }
+    @Override
+    public void maybeTurn() {
+        // TODO Auto-generated method stub
+        int i = rand.nextInt(3);
 
-    TypeA(int row, int col, int dir, int timeSinceLast, char lab, Thing next) {
-        super(row, col, dir, timeSinceLast, lab, next) ;
+        if (i == 1)
+            this.rightTurn();
+    
+        if (i == 2)
+            this.leftTurn();
     }
 
 }
