@@ -1,6 +1,4 @@
-import java.util.* ;
-
-public class TypeC extends Thing{
+public class TypeC extends Thing {
     private int timeSinceLast = 0 ;
 
     TypeC(int row, int col) {

@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class TypeA extends Thing {
 
     TypeA(int row, int col) {
